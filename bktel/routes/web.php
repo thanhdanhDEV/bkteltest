@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;  
 
 /*
 |--------------------------------------------------------------------------
@@ -21,25 +22,33 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Response string
-Route::get('/user', function () {
-    return "Hello Thanh Danh";
-});
+Route::get('/products', [
+    ProductController::class,
+    'index' // index function of ProductController  
+]);
+// Route::get('/hometest', function () {
+//     return view('hometest');
+// });
 
-// Response array
-Route::get('/foods', function () {
-    return ["sushi", "sashimi", "tofu"];
-});
+// // Response string
+// Route::get('/user', function () {
+//     return "Hello Thanh Danh";
+// });
 
-// Response an object
-Route::get('/aboutMe', function () {
-    return response() -> json([
-        'name' => 'Cao Thanh Danh',
-        'email' => 'hocsinhdanh@gmail.com'
-    ]);
-});
+// // Response array
+// Route::get('/foods', function () {
+//     return ["sushi", "sashimi", "tofu"];
+// });
 
-// Response another request = redirect
-Route::get('/something', function () {
-    return redirect('/aboutMe');
-});
+// // Response an object
+// Route::get('/aboutMe', function () {
+//     return response() -> json([
+//         'name' => 'Cao Thanh Danh',
+//         'email' => 'hocsinhdanh@gmail.com'
+//     ]);
+// });
+
+// // Response another request = redirect
+// Route::get('/something', function () {
+//     return redirect('/aboutMe');
+// });
